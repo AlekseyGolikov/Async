@@ -1,5 +1,5 @@
 import socket
-from select import select
+import select
 
 to_monitor = []
 

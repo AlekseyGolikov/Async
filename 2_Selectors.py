@@ -9,13 +9,13 @@ def server():
     server_socket.bind(('localhost', 5000))
     server_socket.listen()
 
-    selector.register(fileobj=server_socket,events=selectors.EVENT_READ,data=accept_connection)
+    selector.register(fileobj=server_socket, events=selectors.EVENT_READ, data=accept_connection)
 
 def accept_connection(server_socket):
     client_socket,addr = server_socket.accept()
     print("Connection from",addr)
 
-    selectors.register(fileobj=client_socket,events=selectors.EVENT_READ,data=send_message)
+    selector.register(fileobj=client_socket, events=selectors.EVENT_READ, data=send_message)
 
 def send_message(client_socket):
     print('Before .recv()')
